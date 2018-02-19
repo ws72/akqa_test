@@ -16,7 +16,7 @@ class App extends Component {
   renderProductsSection() {
     return (
       <div>
-      <Header filterProduct={this.filterProduct} />
+        <Header filterProduct={this.filterProduct} />
         <ProductsSection>
           {this.renderProductsCard()}
         </ProductsSection>
@@ -25,9 +25,12 @@ class App extends Component {
   }
 
   filterProduct(event) {
-    const newProductData = productsData.filter(data => data.size.includes(event.target.value));
-    console.log(newProductData);
-    this.setState({ data: newProductData });
+    if (event.target.value) {
+      const newProductData = productsData.filter(data => data.size.includes(event.target.value));
+      this.setState({ data: newProductData });
+    } else {
+      this.setState({ data: productsData });
+    }
   }
 
   renderProductsCard() {
