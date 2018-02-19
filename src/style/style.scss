@@ -1,0 +1,64 @@
+$bg-color-gray1: gray;
+$bg-color-gray2: whitesmoke;
+.products-card-section{
+  padding: 0 20%;
+}
+
+.heading{
+  background-color:$bg-color-gray1;
+}
+
+.header{
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  background: aqua;
+  height: 50px;
+  &__text{
+    text-transform: capitalize;
+    font-size: 30px;
+    font-weight: 600;
+    padding-left: 10px;
+  }
+}
+
+
+.products-card{
+  &__text{
+    font-size: 19px;
+    font-weight: 600;
+    padding: 8px 2px;
+  }
+  &__price{
+    float:right;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  &__footer{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.filter{
+  padding: 10px 20px;
+  /deep/ select{
+    height: 30px;
+  }
+}
+
+.flag{
+  height: 40px;
+  color: white;
+  &__sale{
+    background: red;
+    width: 60px;
+    padding: 8px 14px;
+  }
+  &__exclusive{
+    background: green;
+    width: 120px;
+    padding: 8px 28px;
+  }
+}
