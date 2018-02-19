@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Filter = () => {
+const Filter = ({ filterProduct }) => {
+  // use filterProduct here
   return (
     <div className='filter'>
       <select className="form-control form-control-sm">
