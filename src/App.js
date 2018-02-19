@@ -1,30 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './style/style.scss'
 import { ProductsSection, ProductsCard, Header } from './components';
 import productsData from './assets/products';
 
-const App = () => {
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  let state = {
-    data: productsData
+    this.state = {
+      data: productsData,
+    };
+    this.filterProduct = this.filterProduct.bind(this);
   }
 
-  // Pass this function to the filter components
-  const filterProduct = (event) => {
-    if(event.target.value==='') return
-    const newProductData = state.data.filter(data => data.size.includes(event.target.value));
+  renderProductsSection() {
+    return (
+      <div>
+      <Header filterProduct={this.filterProduct} />
+        <ProductsSection>
+          {this.renderProductsCard()}
+        </ProductsSection>
+      </div>
+    );
+  }
+
+  filterProduct(event) {
+    const newProductData = productsData.filter(data => data.size.includes(event.target.value));
+    console.log(newProductData);
     this.setState({ data: newProductData });
   }
 
-  const renderProductsSection = () =>
-    (
-      <ProductsSection>
-        {renderProductsCard()}
-      </ProductsSection>
-    );
-
-  const renderProductsCard = () => {
-    return state.data.map((data, index) => {
+  renderProductsCard() {
+    // change this line
+    return this.state.data.map((data, index) => {
       const {
         isSale,
         isExclusive,
@@ -47,12 +55,13 @@ const App = () => {
     });
   };
 
-  return (
-    <div className="app">
-      <Header filterProduct={filterProduct} />
-      {renderProductsSection()}
-    </div>
-  );
+  render() {
+    return (
+      <div className='app'>
+        {this.renderProductsSection()}
+      </div>
+    );
+  }
 }
 
 export default App

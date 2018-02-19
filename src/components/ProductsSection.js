@@ -1,8 +1,8 @@
 import React from 'react'
 
 const ProductsSection = ({ children }) => {
-    return (<section>
-        <h3>AKQA coding test</h3>
+    return (
+    <section>
         <div className='products-card-section'>
             <div className="row">
                 {children}
