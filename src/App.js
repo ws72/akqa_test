@@ -5,13 +5,14 @@ import productsData from './assets/products';
 
 const App = () => {
 
-  this.state = {
+  let state = {
     data: productsData
   }
 
   // Pass this function to the filter components
-  const filterProduct = (size) => {
-    const newProductData = this.state.data.filter(data => data.size.include(size));
+  const filterProduct = (event) => {
+    if(event.target.value==='') return
+    const newProductData = state.data.filter(data => data.size.includes(event.target.value));
     this.setState({ data: newProductData });
   }
 
@@ -23,7 +24,7 @@ const App = () => {
     );
 
   const renderProductsCard = () => {
-    return this.state.data.map((data, index) => {
+    return state.data.map((data, index) => {
       const {
         isSale,
         isExclusive,
@@ -48,7 +49,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header filterProduct={this.filterProduct}/>
+      <Header filterProduct={filterProduct} />
       {renderProductsSection()}
     </div>
   );
