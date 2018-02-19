@@ -1,4 +1,6 @@
-var htmlWebpackPlugin = require('html-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports={
   entry:'./src/index.js',
@@ -6,10 +8,15 @@ module.exports={
     path:__dirname+'/dist',
     filename:'bundle.js'
   },
+
   plugins:[
     new htmlWebpackPlugin({
       template:'index.html'
-    })
+    }),
+    
+    new CopyWebpackPlugin([
+      { from: 'src/assets/img', to: 'img' },
+    ])
   ],
   devServer:{
     inline:true,
