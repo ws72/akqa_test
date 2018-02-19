@@ -1,6 +1,6 @@
 import React from 'react'
 import './style/style.scss'
-import { ProductsSection, ProductsCard } from './components';
+import { ProductsSection, ProductsCard, Header } from './components';
 import * as productsData from './assets/products';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     );
 
   const renderProductsCard = () => {
-    return productsData.default.map((data,index) => {
+    return productsData.default.map((data, index) => {
       const {
         isSale,
         isExclusive,
@@ -37,7 +37,8 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
+      <Header />
       {renderProductsSection()}
     </div>
   );
